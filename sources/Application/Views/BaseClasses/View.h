@@ -153,6 +153,7 @@ public:
 	static int margin_ ;
 	static int songRowCount_ ;
 	static bool miniLayout_ ;
+	static int altRowNumber_;
 } ;
 
 #endif
