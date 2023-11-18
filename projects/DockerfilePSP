@@ -1,0 +1,3 @@
+FROM pspdev/pspdev:latest
+
+CMD cd LittleGPTracker/projects && make PLATFORM=PSP
