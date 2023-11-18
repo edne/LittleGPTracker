@@ -1,0 +1,5 @@
+FROM i386/ubuntu:latest
+
+RUN apt-get update && apt-get install -y libsdl1.2-dev make g++ libjack-dev 
+
+CMD cd LittleGPTracker/projects && make platform=DEB
