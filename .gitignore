@@ -8,3 +8,5 @@ tracks/**
 *elf*
 *dge*
 .vscode
+*.xcf
+/*.bmp
