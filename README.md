@@ -38,6 +38,24 @@ some minor adjustments,
   [branch](https://github.com/edne/LittleGPTracker/tree/feature/chain_00_color)
 
 
+Example of `config.xml`
+```xml
+<CONFIG>
+    <BACKGROUND  value="000000"/>
+    <FOREGROUND  value="E0D0D0"/>
+    <HICOLOR1    value="2080F0"/>
+    <HICOLOR2    value="30D0D0"/>
+    <CURSORCOLOR value="00F080"/>
+
+    <ZEROCOLOR   value="2040A0"/>
+
+    <ROWCOLOR    value="20A0F0"/>
+    <ROWCOLOR2   value="30D0D0"/>
+
+    <ALTROWNUMBER value="2"/>
+</CONFIG>
+```
+
 
 # Building with docker
 
