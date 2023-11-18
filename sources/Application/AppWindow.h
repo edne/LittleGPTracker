@@ -97,6 +97,9 @@ private:
     static GUIColor cursorColor_;
     static GUIColor zeroColor_;
 
+    static GUIColor rownumberColor_;
+    static GUIColor rownumber2Color_;
+
 	ColorDefinition colorIndex_ ;
 
 	static int charWidth_ ;

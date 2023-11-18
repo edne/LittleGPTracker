@@ -3,6 +3,7 @@
 #include "Application/Player/Player.h"
 #include "Application/Utils/char.h"
 #include "Application/AppWindow.h"
+#include "Application/Model/Config.h"
 #include "ModalView.h"
 
 bool View::initPrivate_=false ;
@@ -10,6 +11,7 @@ bool View::initPrivate_=false ;
 int View::margin_=0 ;
 int View::songRowCount_ ;//=21 ;
 bool View::miniLayout_=false ;
+int View::altRowNumber_=0xFF;
 
 View::View(GUIWindow &w,ViewData *viewData):
 	w_(w),
@@ -30,7 +32,12 @@ View::View(GUIWindow &w,ViewData *viewData):
 	viewMode_=VM_NORMAL ;
 	locked_=false ;
 	viewData_=viewData;
-} ;
+
+	const char *altRowStr = Config::GetInstance()->GetValue("ALTROWNUMBER");
+	if (altRowStr) {
+		altRowNumber_ = atoi(altRowStr);
+	}
+};
 
 GUIPoint View::GetAnchor() {
 	int width=40 ;

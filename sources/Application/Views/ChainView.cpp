@@ -632,11 +632,15 @@ void ChainView::DrawView() {
 	
 // Display row numbers
 
-	SetColor(CD_HILITE1) ;
 	char row[3] ;
 	pos=anchor ;
 	pos._x-=3 ;
 	for (int j=0;j<16;j++) {
+		if ((j/altRowNumber_)%2 == 0) {
+			SetColor(CD_ROWNUMBER) ;
+		} else {
+			SetColor(CD_ROWNUMBER2) ;
+		}
 		hex2char(j,row) ;
 		DrawString(pos._x,pos._y,row,props) ;
 		pos._y+=1 ;
