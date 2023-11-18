@@ -980,9 +980,9 @@ void PhraseView::DrawView() {
 	pos._x-=3 ;
 	for (int j=0;j<16;j++) {
 		if ((j/altRowNumber_)%2 == 0) {
-			SetColor(CD_HILITE1) ;
+			SetColor(CD_ROWNUMBER) ;
 		} else {
-			SetColor(CD_HILITE2) ;
+			SetColor(CD_ROWNUMBER2) ;
 		}
 		hex2char(j,buffer) ;
 		DrawString(pos._x,pos._y,buffer,props) ;

@@ -794,9 +794,9 @@ void SongView::DrawView() {
 	for (int j=0;j<View::songRowCount_;j++) {
 		char p=j+viewData_->songOffset_ ;
 		if ((p/altRowNumber_)%2 == 0) {
-			SetColor(CD_HILITE1) ;
+			SetColor(CD_ROWNUMBER) ;
 		} else {
-			SetColor(CD_HILITE2) ;
+			SetColor(CD_ROWNUMBER2) ;
 		}
 		hex2char(p,row) ;
 		DrawString(pos._x,pos._y,row,props) ;

@@ -25,6 +25,9 @@ GUIColor AppWindow::highlightColor_(0xA8,0x16,0x16) ;
 GUIColor AppWindow::consoleColor_(0xFF,0x00,0xFF) ;
 GUIColor AppWindow::cursorColor_(0x77,0x6B,0x56) ;
 
+GUIColor AppWindow::rownumberColor_(0x8E,0xA0,0x4A) ;
+GUIColor AppWindow::rownumber2Color_(0xA8,0x16,0x16) ;
+
 int AppWindow::charWidth_=8;
 int AppWindow::charHeight_=8 ;
 
@@ -96,6 +99,9 @@ AppWindow::AppWindow(I_GUIWindowImp &imp):GUIWindow(imp)  {
     defineColor("HICOLOR1",highlightColor_) ;
     defineColor("HICOLOR2",highlight2Color_) ;
     defineColor("CURSORCOLOR",cursorColor_) ;
+
+    defineColor("ROWCOLOR",rownumberColor_) ;
+    defineColor("ROWCOLOR2",rownumber2Color_) ;
 
 	GUIWindow::Clear(backgroundColor_) ;
 	
@@ -233,6 +239,13 @@ void AppWindow::Flush() {
 							break ;
 						case CD_CURSOR:
 							gcolor=cursorColor_ ;
+							break ;
+
+						case CD_ROWNUMBER:
+							gcolor=rownumberColor_ ;
+							break ;
+						case CD_ROWNUMBER2:
+							gcolor=rownumber2Color_ ;
 							break ;
 	
 						default:
