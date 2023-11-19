@@ -26,17 +26,17 @@ View::View(GUIWindow &w,ViewData *viewData):
 	   View::margin_=0 ;
 	   songRowCount_=miniLayout_?16:22 ;
 
+		const char *altRowStr = Config::GetInstance()->GetValue("ALTROWNUMBER");
+		if (altRowStr) {
+			altRowNumber_ = atoi(altRowStr);
+		}
+
      initPrivate_=true ;
   }
 	mask_=0 ;
 	viewMode_=VM_NORMAL ;
 	locked_=false ;
 	viewData_=viewData;
-
-	const char *altRowStr = Config::GetInstance()->GetValue("ALTROWNUMBER");
-	if (altRowStr) {
-		altRowNumber_ = atoi(altRowStr);
-	}
 };
 
 GUIPoint View::GetAnchor() {
