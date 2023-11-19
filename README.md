@@ -34,8 +34,9 @@ some minor adjustments,
 - Color row numbers in two different colors (`ROWCOLOR` and `ROWCOLOR2` values
   in configuration) alternating each N rows (`ALTROWNUMBER` in configuration),
 [branch](https://github.com/edne/LittleGPTracker/tree/feature/alternate_row_number_color)
-- In song and live view display the `00` chain in a different color (`ZEROCOLOR` in configuration),
-  [branch](https://github.com/edne/LittleGPTracker/tree/feature/chain_00_color)
+- Display the `00` chain and phrases in a different color (`ZEROCOLOR` in
+  configuration),
+[branch](https://github.com/edne/LittleGPTracker/tree/feature/00_color)
 
 
 Example of `config.xml`
@@ -47,7 +48,7 @@ Example of `config.xml`
     <HICOLOR2    value="30D0D0"/>
     <CURSORCOLOR value="00F080"/>
 
-    <ZEROCOLOR   value="2040A0"/>
+    <ZEROCOLOR   value="808080"/>
 
     <ROWCOLOR    value="20A0F0"/>
     <ROWCOLOR2   value="30D0D0"/>
