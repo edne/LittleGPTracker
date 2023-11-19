@@ -37,6 +37,9 @@ some minor adjustments
 - Display the `00` chain and phrases in a different color (`ZEROCOLOR` in
   configuration)
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/00_color)
+- When inserting or cloning a new chain or phrase use the first one free just
+  after the current one and not from the beginning
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/next_from_current)
 
 
 Example of `config.xml`
