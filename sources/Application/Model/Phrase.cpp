@@ -45,6 +45,16 @@ unsigned short Phrase::GetNext() {
 	return NO_MORE_PHRASE ;
 } ;
 
+unsigned short Phrase::GetNextFrom(unsigned short current) {
+	for (int i=current;i<PHRASE_COUNT;i++) {
+		if (!isUsed_[i]) {
+			isUsed_[i]=true ;
+			return i ;
+		}
+	}
+	return NO_MORE_PHRASE ;
+} ;
+
 void Phrase::SetUsed(unsigned char c) {
 	isUsed_[c]=true ;
 }

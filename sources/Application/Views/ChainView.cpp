@@ -126,7 +126,7 @@ void ChainView::clonePosition() {
     unsigned char current=*pos ;
 	if (current==255) return ;
 
-    unsigned short next=viewData_->song_->phrase_->GetNext() ;
+    unsigned short next=viewData_->song_->phrase_->GetNextFrom(viewData_->currentPhrase_) ;
 	if (next==NO_MORE_PHRASE) return ;
 
     unsigned char *src=viewData_->song_->phrase_->note_+16*current ;
@@ -381,7 +381,7 @@ void ChainView::ProcessButtonMask(unsigned short mask,bool pressed) {
 	
  	if (viewMode_==VM_NEW) {
 		if (mask==EPBM_A) {
-			unsigned short next=viewData_->song_->phrase_->GetNext() ;
+			unsigned short next=viewData_->song_->phrase_->GetNextFrom(viewData_->currentPhrase_) ;
 			if (next!=NO_MORE_PHRASE) {
 				setPhrase((unsigned char)next) ;
 				isDirty_=true ;

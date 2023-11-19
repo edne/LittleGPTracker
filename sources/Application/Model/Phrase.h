@@ -10,6 +10,7 @@ public:
 	Phrase() ;
 	~Phrase() ;
 	unsigned short GetNext() ;
+	unsigned short GetNextFrom(unsigned short current) ;
 	bool IsUsed(uchar i) { return isUsed_[i] ; } ;
 	void SetUsed(uchar c) ;
 	void ClearAllocation() ;
