@@ -662,8 +662,15 @@ void ChainView::DrawView() {
 		if (d==0xFF) {
 			DrawString(pos._x,pos._y,"--",props) ;
 		} else {
+			if (d==0x00) {
+				SetColor(CD_ZERO) ;
+			}
 			hex2char(d,row) ;
 			DrawString(pos._x,pos._y,row,props) ;
+
+			if (d==0x00) {
+				SetColor(CD_NORMAL) ;
+			}
 		}
         setTextProps(props,0,j,true) ;		
 		pos._y++ ;
