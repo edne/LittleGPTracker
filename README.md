@@ -10,7 +10,7 @@ https://github.com/Mdashdotdashn/LittleGPTracker
 
 This repository is based on the [@djdiskmachine
 fork](https://github.com/djdiskmachine/LittleGPTracker/), active at least till
-the beginning off 2023. All the features introduced here are on [separate
+the beginning of 2023. All the features introduced here are on [separate
 branches](https://github.com/edne/LittleGPTracker/branches/all?query=feature%2F)
 based on its `master` and can be merged separately on any other fork starting
 from the same base (like [this
@@ -27,16 +27,16 @@ you find (and fix) some bug on them pull requests are welcome.
   request](https://github.com/djdiskmachine/LittleGPTracker/pull/50). The font
 is taken from
 [here](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_cgathin) with
-some minor adjustments,
-[branch](https://github.com/edne/LittleGPTracker/tree/feature/ibm_font)
-- Build system with dockerfiles,
-  [branch](https://github.com/edne/LittleGPTracker/tree/feature/docker_build)
+some minor adjustments
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/ibm_font)
+- Build system with dockerfiles
+  [🔗](https://github.com/edne/LittleGPTracker/tree/feature/docker_build)
 - Color row numbers in two different colors (`ROWCOLOR` and `ROWCOLOR2` values
-  in configuration) alternating each N rows (`ALTROWNUMBER` in configuration),
-[branch](https://github.com/edne/LittleGPTracker/tree/feature/alternate_row_number_color)
+  in configuration) alternating each N rows (`ALTROWNUMBER` in configuration)
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/alternate_row_number_color)
 - Display the `00` chain and phrases in a different color (`ZEROCOLOR` in
-  configuration),
-[branch](https://github.com/edne/LittleGPTracker/tree/feature/00_color)
+  configuration)
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/00_color)
 
 
 Example of `config.xml`
