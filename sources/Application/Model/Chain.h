@@ -9,6 +9,7 @@ public:
 	Chain() ;
 	~Chain() ;
 	unsigned short GetNext() ;
+	unsigned short GetNextFrom(unsigned short current) ;
 	bool IsUsed(unsigned char i) { return isUsed_[i] ; } ;
 	void SetUsed(unsigned char c) ;
 	void ClearAllocation() ;

@@ -30,6 +30,16 @@ unsigned short Chain::GetNext() {
 	return NO_MORE_CHAIN ;
 } ;
 
+unsigned short Chain::GetNextFrom(unsigned short current) {
+	for (int i=current;i<CHAIN_COUNT;i++) {
+		if (!isUsed_[i]) {
+			isUsed_[i]=true ;
+			return i ;
+		}
+	}
+	return NO_MORE_CHAIN ;
+} ;
+
 void Chain::SetUsed(unsigned char c) {
 	isUsed_[c]=true ;
 }

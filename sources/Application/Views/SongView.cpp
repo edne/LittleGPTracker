@@ -140,7 +140,7 @@ void SongView::clonePosition() {
     unsigned char current=*pos ;
 	if (current==255) return;
     
-	unsigned short next=viewData_->song_->chain_->GetNext() ;
+	unsigned short next=viewData_->song_->chain_->GetNextFrom(viewData_->currentChain_) ;
 	if (next==NO_MORE_CHAIN) return ;
     
     unsigned char *src=viewData_->song_->chain_->data_+16*current ;
@@ -492,7 +492,7 @@ void SongView::ProcessButtonMask(unsigned short mask,bool pressed) {
 	
  	if (viewMode_==VM_NEW) {
 		if (mask==EPBM_A) {
-			unsigned short next=viewData_->song_->chain_->GetNext() ;
+			unsigned short next=viewData_->song_->chain_->GetNextFrom(viewData_->currentChain_) ;
 			if (next!=NO_MORE_CHAIN) {
 				setChain((unsigned char)next) ;
 				isDirty_=true ;
