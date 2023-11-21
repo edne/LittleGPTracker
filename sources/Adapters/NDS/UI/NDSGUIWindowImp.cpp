@@ -33,10 +33,6 @@ void NDSGUIWindowImp::Clear(GUIColor &c) {
 #define FONT_WIDTH 1024
 #define FONT_COUNT 127
 
-static const unsigned char font[]= {
-	#include "Resources/font.c"
-};
-
 void NDSGUIWindowImp::DrawString(char *string,GUIPoint &pos,GUITextProperties& p) {
 
 	int len=int(strlen(string)) ;
