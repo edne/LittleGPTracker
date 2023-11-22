@@ -41,6 +41,7 @@ public: // Added functionality
 	void ProcessExpose() ;
 	void ProcessQuit() ;
 	void ProcessUserEvent(SDL_Event &event) ;
+    void LoadFont();
 protected:
 	void prepareFonts() ;
 	void prepareFullFonts() ;

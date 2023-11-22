@@ -50,6 +50,7 @@ unsigned short appHeight=240 ;
 
 SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p) 
 {
+	LoadFont();
 
   SDLCreateWindowParams &sdlP=(SDLCreateWindowParams &)p;
   cacheFonts_=sdlP.cacheFonts_ ;
@@ -283,25 +284,8 @@ void SDLGUIWindowImp::prepareBitmaps() {
 #define FONT_WIDTH 1024
 #define FONT_COUNT 127
 
-static SDL_Surface *fonts[FONT_COUNT] ;
-
-void SDLGUIWindowImp::prepareFullFonts()
+void SDLGUIWindowImp::LoadFont()
 {
-  Trace::Log("DISPLAY","Preparing full font cache") ;
-  Uint32 rmask, gmask, bmask, amask;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  rmask = 0xff000000;
-  gmask = 0x00ff0000;
-  bmask = 0x0000ff00;
-  amask = 0x000000ff;
-#else
-  rmask = 0x000000ff;
-  gmask = 0x0000ff00;
-  bmask = 0x00ff0000;
-  amask = 0xff000000;
-#endif
-
 	// Load default font
 	for (int k=0; k<128*64; k++)
 	{
@@ -347,6 +331,27 @@ void SDLGUIWindowImp::prepareFullFonts()
 			}
 		}
 	}
+}
+
+static SDL_Surface *fonts[FONT_COUNT] ;
+
+void SDLGUIWindowImp::prepareFullFonts()
+{
+  Trace::Log("DISPLAY","Preparing full font cache") ;
+  Uint32 rmask, gmask, bmask, amask;
+
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+  rmask = 0xff000000;
+  gmask = 0x00ff0000;
+  bmask = 0x0000ff00;
+  amask = 0x000000ff;
+#else
+  rmask = 0x000000ff;
+  gmask = 0x0000ff00;
+  bmask = 0x00ff0000;
+  amask = 0xff000000;
+#endif
+
 
 	for (int i=0;i<FONT_COUNT;i++)
   {
@@ -514,7 +519,6 @@ void SDLGUIWindowImp::transform(const GUIPoint &srcPoint, int *x, int *y)
 
 void SDLGUIWindowImp::DrawString(const char *string,GUIPoint &pos,GUITextProperties &p,bool overlay) 
 {
-
 	int len=int(strlen(string)) ;
   int xx,yy;
   transform(pos, &xx , &yy);
