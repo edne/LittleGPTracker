@@ -70,5 +70,6 @@ private:
 	int appAnchorX_ ;
 	int appAnchorY_ ;
 	int mult_ ;
+    unsigned char font_[128*64];
 } ;
 #endif
