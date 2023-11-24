@@ -41,7 +41,7 @@ public: // Added functionality
 	void ProcessExpose() ;
 	void ProcessQuit() ;
 	void ProcessUserEvent(SDL_Event &event) ;
-    void LoadFont();
+	void LoadFont();
 protected:
 	void prepareFonts() ;
 	void prepareFullFonts() ;
@@ -71,6 +71,6 @@ private:
 	int appAnchorX_ ;
 	int appAnchorY_ ;
 	int mult_ ;
-    unsigned char font_[128*64];
+	unsigned char font_[128*64];
 } ;
 #endif
