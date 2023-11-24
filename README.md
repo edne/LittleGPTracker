@@ -29,12 +29,12 @@ is taken from
 [here](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_cgathin) with
 some minor adjustments
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/ibm_font)~~
-- Load font directly from a `.bmp` at startup, the file should be in [this
+- Load font directly from a `.bmp` at startup[^1], the file should be in [this
   format](https://github.com/edne/LittleGPTracker/blob/master/sources/Resources/original.bmp),
 in the same path as your config file and the name can be set in the
 configuration with the `FONTBITMAP` key, if not defined or not found it will
 try to load a file called `font.bmp` and if it fails will use the default one
-[🔗](https://github.com/edne/LittleGPTracker/tree/feature/load_custom_font) [^1]
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/load_custom_font)
 - Build system with dockerfiles
   [🔗](https://github.com/edne/LittleGPTracker/tree/feature/docker_build)
 - Color row numbers in two different colors (`ROWCOLOR` and `ROWCOLOR2` values
@@ -47,14 +47,14 @@ try to load a file called `font.bmp` and if it fails will use the default one
   after the current one and not from the beginning
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/next_from_current)
 
-[^1] NOTE: _This feature is supported only on Linux and PSP, on other platforms
+[^1]: This feature is supported only on Linux and PSP, on other platforms
 could either: already work out of the box (like probably on Windows and Mac),
 be supported with minimal changes (like for CAANOO and GP2X, you will need to
 copy-paste the `LoadFont` methods in you implementation class and replacing the
 occurrences of the global `font` variable with a local `font_` attribute), or
 not being possible at all (like for the NDS that doesn't seem to even use SDL,
-there isn't even a `Makefile` for it so I don't know if it's actually
-supported)_
+there isn't a `Makefile` for it so I don't know if the platform is even
+supported)
 
 Example of `config.xml`
 ```xml
