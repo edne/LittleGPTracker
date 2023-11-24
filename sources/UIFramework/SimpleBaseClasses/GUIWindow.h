@@ -10,7 +10,7 @@ class I_GUIWindowImp ;
 
 
 static const unsigned char font[]= {
-	#include "Resources/font.c"
+	#include "Resources/font.h"
 };
 
 
