@@ -292,7 +292,8 @@ void SDLGUIWindowImp::LoadFont()
 		font_[k] = font[k];
 	}
 
-	SDL_Surface* surface = SDL_LoadBMP("font.bmp");
+ 	const char *font_bmp = Config::GetInstance()->GetValue("FONTBITMAP");
+	SDL_Surface* surface = SDL_LoadBMP((font_bmp) ? font_bmp : "font.bmp");
 	if (surface == NULL)
 	{
 		Trace::Error("[DISPLAY] Failed to load font bitmap") ;
