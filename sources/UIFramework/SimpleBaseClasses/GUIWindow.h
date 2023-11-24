@@ -8,6 +8,12 @@
 #include "UIFramework/Interfaces/I_GUIGraphics.h"
 class I_GUIWindowImp ;
 
+
+static const unsigned char font[]= {
+	#include "Resources/font.h"
+};
+
+
 //
 // Abstract top class for all windows. Windows are control containers and
 // they use a Window implementation class to provide the Graphical and notification

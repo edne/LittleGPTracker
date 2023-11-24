@@ -50,6 +50,7 @@ unsigned short appHeight=240 ;
 
 SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p) 
 {
+	LoadFont();
 
   SDLCreateWindowParams &sdlP=(SDLCreateWindowParams &)p;
   cacheFonts_=sdlP.cacheFonts_ ;
@@ -282,9 +283,56 @@ void SDLGUIWindowImp::prepareBitmaps() {
 
 #define FONT_WIDTH 1024
 #define FONT_COUNT 127
-static const unsigned char font[]= {
-	#include "Resources/font.c"
-};
+
+void SDLGUIWindowImp::LoadFont()
+{
+	// Load default font
+	for (int k=0; k<128*64; k++)
+	{
+		font_[k] = font[k];
+	}
+
+ 	const char *font_bmp = Config::GetInstance()->GetValue("FONTBITMAP");
+	SDL_Surface* surface = SDL_LoadBMP((font_bmp) ? font_bmp : "font.bmp");
+	if (surface == NULL)
+	{
+		Trace::Error("[DISPLAY] Failed to load font bitmap") ;
+	}
+	else if (surface->w != 128 || surface->h != 64)
+	{
+		Trace::Error("[DISPLAY] Invalid font bitmap size, should be 128x64") ;
+	}
+	else
+	{
+		int bpp = surface->format->BytesPerPixel;
+		for (int c=0; c<128; c++)
+		{
+			int cy = c / 16;
+			int cx = c % 16;
+			int pxy = cy * 8;
+			int pxx = cx * 8;
+			for (int y=0; y<8; y++)
+			{
+				for (int x=0; x<8; x++)
+				{
+					// First byte of the pixel
+					Uint8 *p = (Uint8 *)surface->pixels + \
+					           (pxy+y) * surface->pitch + \
+					           (pxx+x) * bpp;
+					int is_white;
+					if (bpp == 1) {
+						// One channel
+						is_white = p[0]>0;
+					} else {
+						// Any of the component is present, ignore alpha
+						is_white = p[0]>0 || p[1]>0 || p[2]>0;
+					}
+					font_[y*1024 + c*8 + x] = is_white;
+				}
+			}
+		}
+	}
+}
 
 static SDL_Surface *fonts[FONT_COUNT] ;
 
@@ -304,6 +352,7 @@ void SDLGUIWindowImp::prepareFullFonts()
   bmask = 0x00ff0000;
   amask = 0xff000000;
 #endif
+
 
 	for (int i=0;i<FONT_COUNT;i++)
   {
@@ -327,7 +376,7 @@ void SDLGUIWindowImp::prepareFullFonts()
 			bgPtr+=(4-pixelSize) ;
 			fgPtr+=(4-pixelSize) ;
 #endif
-			const unsigned char *src=font+i*8 ;
+			const unsigned char *src=font_+i*8 ;
 			unsigned char *dest=(unsigned char *)fonts[i]->pixels;
       for (int y = 0; y < 8; y++)
       {
@@ -435,7 +484,7 @@ void SDLGUIWindowImp::DrawChar(const char c, GUIPoint &pos, GUITextProperties &p
 		bgPtr+=(4-pixelSize) ;
 		fgPtr+=(4-pixelSize) ;
 #endif
-		const unsigned char *src=font+c*8 ;
+		const unsigned char *src=font_+c*8 ;
 		unsigned char *dest=((unsigned char *)screen_->pixels) + (yy*screen_->pitch) + xx*pixelSize;
 
 		for (int y = 0; y < 8; y++) {
@@ -471,7 +520,6 @@ void SDLGUIWindowImp::transform(const GUIPoint &srcPoint, int *x, int *y)
 
 void SDLGUIWindowImp::DrawString(const char *string,GUIPoint &pos,GUITextProperties &p,bool overlay) 
 {
-
 	int len=int(strlen(string)) ;
   int xx,yy;
   transform(pos, &xx , &yy);
@@ -517,7 +565,7 @@ void SDLGUIWindowImp::DrawString(const char *string,GUIPoint &pos,GUITextPropert
 			bgPtr+=(4-pixelSize) ;
 			fgPtr+=(4-pixelSize) ;
 #endif
-			const unsigned char *src=font+(string[l]*8) ;
+			const unsigned char *src=font_+(string[l]*8) ;
 			unsigned char *dest=((unsigned char *)screen_->pixels) + (yy*screen_->pitch) + xx*pixelSize;
 
 			for (int y = 0; y < 8; y++) {
