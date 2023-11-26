@@ -1085,6 +1085,14 @@ void SampleInstrument::ProcessCommand(int channel,FourCC cc,ushort value) {
 			}
 			break ;
 
+		case I_CMD_REVS:
+			{
+				// Same arguments of PLOF but play it backwards
+				int start = rp->rendLoopStart_ ;
+				rp->rendLoopStart_ = rp->rendLoopEnd_ ;
+				rp->rendLoopEnd_ = start ;
+				rp->reverse_ = true ;
+			}
 		case I_CMD_PLOF:
 			{
 				if (!source_) return ;
