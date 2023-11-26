@@ -29,23 +29,32 @@ is taken from
 [here](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_cgathin) with
 some minor adjustments
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/ibm_font)~~
+
 - Load font directly from a `.bmp` at startup[^1], the file should be in [this
   format](https://github.com/edne/LittleGPTracker/blob/master/sources/Resources/original.bmp),
 in the same path as your config file and the name can be set in the
 configuration with the `FONTBITMAP` key, if not defined or not found it will
 try to load a file called `font.bmp` and if it fails will use the default one
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/load_custom_font)
+
 - Build system with dockerfiles
   [🔗](https://github.com/edne/LittleGPTracker/tree/feature/docker_build)
+
 - Color row numbers in two different colors (`ROWCOLOR` and `ROWCOLOR2` values
   in configuration) alternating each N rows (`ALTROWNUMBER` in configuration)
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/alternate_row_number_color)
+
 - Display the `00` chain and phrases in a different color (`ZEROCOLOR` in
   configuration)
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/00_color)
+
 - When inserting or cloning a new chain or phrase use the first one free just
   after the current one and not from the beginning
 [🔗](https://github.com/edne/LittleGPTracker/tree/feature/next_from_current)
+
+- Add command reverse `REVS`, takes the same parameters as `PLOF` but play the
+  sample backwards, the instrument has to bee in `loop` mode
+[🔗](https://github.com/edne/LittleGPTracker/tree/feature/reverse_command)
 
 [^1]: This feature is supported only on Linux and PSP, on other platforms
 could either: already work out of the box (like probably on Windows and Mac),
@@ -72,7 +81,7 @@ Example of `config.xml`
 
     <ALTROWNUMBER value="2"/>
 
-     <FONTBITMAP value="custom_font.bmp"/>
+    <FONTBITMAP value="custom_font.bmp"/>
 </CONFIG>
 ```
 
